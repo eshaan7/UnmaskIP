@@ -1,0 +1,36 @@
+<div class="row d-flex justify-content-center p-2">
+
+  <nb-card>
+    <nb-card-body class="p-4">
+      <form #ipForm=ngForm class="form form-horizontal">
+        <div class="row d-flex align-items-center">
+
+          <div class="col-9">
+
+            <div class="form-group">
+              <label class="label form-control-label">Enter IP Address To Check</label>
+              <input pattern="[.0-9]*" #ipToCheck=ngModel [(ngModel)]="ip_to_check" fullWidth minlength="8" name="ipToCheck" nbInput
+                required="true" placeholder="127.0.0.1" shape="rectangle" status="primary" type="text">
+
+              <div *ngIf="ipToCheck.invalid && (ipToCheck.dirty || ipToCheck.touched)" class="alert alert-danger mt-3">
+
+                <div *ngIf="ipToCheck.errors.required">
+                  IP Address is required.
+                </div>
+                <div *ngIf="ipToCheck.errors.minlength">
+                  IP Address must be at least 8 characters long.
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <button class="col-2" (click)="check()" [disabled]="ipForm.form.invalid" nbButton status="primary">Check
+          </button>
+
+        </div>
+      </form>
+    </nb-card-body>
+  </nb-card>
+
+</div>

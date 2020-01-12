@@ -1,0 +1,136 @@
+<div class="row p-1">
+
+    <!-- Location  -->
+    <nb-card size="small" style="width: 100%;">
+        <nb-card-header>
+            <h6>
+                <nb-icon icon="map"></nb-icon>
+                Location
+            </h6>
+        </nb-card-header>
+        <nb-card-body class="p-0">
+            <ngx-gmaps [lat]="result?.latitude" [lng]="result?.longitude"></ngx-gmaps>
+        </nb-card-body>
+    </nb-card>
+</div>
+
+<div class="d-flex row align-items-start p-4">
+
+    <!-- IP Info -->
+    <div class="col-4">
+
+        <nb-card>
+            <nb-card-header>
+                <h4>
+                    <nb-icon icon="globe-outline"></nb-icon> {{ ip_to_check }}
+                    <span style="font-size: 1rem;" *ngFor="let tag of result?.tags" class="badge badge-primary">{{ tag | uppercase }}</span>
+                </h4>
+                <!-- <nb-badge position="top left" status="danger" *ngFor="let tag of result.tags" [text]="tag | uppercase">
+                </nb-badge> -->
+
+            </nb-card-header>
+            <nb-card-body class="pt-0">
+                <nb-list>
+                    <nb-list-item>
+                        City
+                        <strong>{{ result?.city }}</strong>
+                    </nb-list-item>
+                    <nb-list-item>
+                        Country
+                        <strong>{{ result?.country_name }}</strong>
+                    </nb-list-item>
+                    <nb-list-item>
+                        ISP
+                        <strong>{{ result?.isp }}</strong>
+                    </nb-list-item>
+                    <nb-list-item *ngIf="result?.org">
+                        Organization
+                        <strong>{{ result?.org }}</strong>
+                    </nb-list-item>
+                    <nb-list-item *ngIf="result?.domain">
+                        Domain
+                        <strong>{{ result?.domain }}</strong>
+                    </nb-list-item>
+                    <nb-list-item *ngIf="result?.asn">
+                        ASN
+                        <strong>{{ result?.asn }}</strong>
+                    </nb-list-item>
+                    <nb-list-item *ngIf="result?.ports">
+                        Ports
+                        <span>
+                            <strong style="font-size: 0.8rem; size: 0.3rem;" class="p-1 m-1 badge badge-danger" *ngFor="let port of result?.ports">
+                                {{ port }}
+                            </strong>
+                        </span>
+                    </nb-list-item>
+
+                </nb-list>
+
+            </nb-card-body>
+
+        </nb-card>
+
+    </div>
+
+    <!-- Services  -->
+    <div class="col-8">
+
+        <nb-card>
+            <nb-card-header>
+                <h4>
+                    <nb-icon icon="options-2-outline"></nb-icon>
+                    Services
+                </h4>
+            </nb-card-header>
+            <nb-card-body class="pt-0">
+
+                <nb-tabset>
+                    <nb-tab *ngFor="let data of result?.data" [tabTitle]="data?._shodan?.module | uppercase"
+                        [badgeText]="data?.port" badgePosition="top right" badgeStatus="danger">
+                        <nb-list>
+                            <nb-list-item *ngIf="data?.transport">
+                                Transport
+                                <strong>{{ data?.transport | uppercase}}</strong>
+                            </nb-list-item>
+                            <nb-list-item *ngIf="data?.product">
+                                Product
+                                <strong>{{ data?.product }}</strong>
+                            </nb-list-item>
+                            <nb-list-item *ngIf="data?.tags">
+                                Tags
+                                <strong>{{ data?.tags[0] | uppercase }}</strong>
+                            </nb-list-item>
+                        </nb-list>
+
+                        <nb-list *ngIf="data?.ssh">
+                            <nb-list-item>
+                                Fingerprint
+                                <strong>{{ data?.ssh?.fingerprint }}</strong>
+                            </nb-list-item>
+                            <nb-list-item>
+                                Key Type
+                                <strong>{{ data?.ssh?.type }}</strong>
+                            </nb-list-item>
+                            <nb-list-item>
+                                Cipher Used
+                                <strong>{{ data?.ssh?.cipher }}</strong>
+                            </nb-list-item>
+                            <nb-list-item>
+                                Server Host Key Algorithms
+                                <strong *ngFor="let k of data?.ssh?.kex?.server_host_key_algorithms">{{ k }}</strong>
+                            </nb-list-item>
+                            <nb-list-item>
+                                Key
+                                <strong style="margin-left: 13rem; font-size: 0.7rem;">{{ data?.ssh?.key }}</strong>
+                            </nb-list-item>
+                        </nb-list>
+
+                    </nb-tab>
+                </nb-tabset>
+
+            </nb-card-body>
+        </nb-card>
+
+    </div>
+
+</div>

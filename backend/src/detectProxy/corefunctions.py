@@ -1,10 +1,7 @@
-''' src imports '''
-
-from src import shodan_api
-
-''' general imports '''
+''' imports '''
 
 import pycountry
+from src import shodan_api
 
 ''' core '''
 
@@ -18,17 +15,21 @@ def getCountryName(cc):
         return None
 
 
-def fetchIPInfo(ip_to_check):
-    ipinfo = None
-    result_dict = None
-
-    # Check on Shodan.io
+def fetchFromShodan(ip_to_check):
+     # Check on Shodan.io
     try:
         ipinfo = shodan_api.host(ip_to_check)
-        ipinfo['data'] = None
     except Exception as e:
         ipinfo = None
-        print("No data found on shodan.")
+        print("No data found on shodan: ", e)
+
+    return ipinfo
+
+
+def fetchIPInfo(ip_to_check):
+    result_dict = None
+
+    ipinfo = fetchFromShodan(ip_to_check)
 
     if ipinfo != None:
         cc = ipinfo['country_code']

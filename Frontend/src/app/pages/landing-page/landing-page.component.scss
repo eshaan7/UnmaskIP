@@ -1,0 +1,20 @@
+@import '../../@theme/styles/themes';
+
+@include nb-install-component() {
+  position: relative;
+  display: block;
+  overflow: hidden;
+
+  nb-card {
+    position: relative;
+  }
+
+  nb-card-header {
+    border-bottom: none;
+  }
+
+  .subtitle {
+    color: nb-theme(text-hint-color);
+  }
+
+}

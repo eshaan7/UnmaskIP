@@ -1,0 +1,28 @@
+@import "../../../@theme/styles/themes";
+
+@include nb-install-component() {
+  nb-card-header {
+    border: none;
+    margin-bottom: 0rem;
+    padding: 1rem 1.25rem;
+  }
+
+  nb-list {
+    margin-top: 0.2rem;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .badge-danger {
+    background-color: nb-theme(color-danger-500);
+  }
+
+  nb-list-item {
+    display: flex;
+    padding: 0.5rem;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin: 0 !important;
+  }
+
+}

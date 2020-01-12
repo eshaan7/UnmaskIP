@@ -1,0 +1,95 @@
+<div *ngIf="userService.aggregation_data_front!==null" class="container">
+
+  <div *ngIf="userService.count!==undefined" class="row align-items-center">
+    <div class="col-4">
+      <nb-card>
+        <nb-card-header>No. of IPs</nb-card-header>
+        <nb-card-body>
+          <h3>{{ userService?.count["ip"] }}</h3>
+        </nb-card-body>
+      </nb-card>
+    </div>
+    <div class="col-4">
+      <nb-card>
+        <nb-card-header>No. of Countries</nb-card-header>
+        <nb-card-body>
+          <h3>{{ userService?.count["country"] }}</h3>
+        </nb-card-body>
+      </nb-card>
+    </div>
+    <div class="col-4">
+      <nb-card>
+        <nb-card-header>No. of ISPs</nb-card-header>
+        <nb-card-body>
+          <h3>{{ userService?.count["isp"] }}</h3>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+
+  <!-- 
+  <div class="row mb-3">
+    <p class="paragraph">Here is some information we gathered.</p>
+  </div> -->
+
+  <div class="row align-items-center">
+
+    <div class="col-6">
+      <nb-flip-card>
+        <nb-card-front>
+          <nb-card-header>Top 5 Cities (India)</nb-card-header>
+          <nb-card-body *ngIf="graphData_in1!==undefined">
+            <ngx-echarts-pie [pieChartName]="'Cities in India'" [pieChartData]="graphData_in1"></ngx-echarts-pie>
+          </nb-card-body>
+        </nb-card-front>
+        <nb-card-back>
+          <nb-card-header>Top 5 Countries</nb-card-header>
+          <nb-card-body *ngIf="graphData1!==undefined">
+            <ngx-echarts-pie [pieChartName]="'Countries'" [pieChartData]="graphData1"></ngx-echarts-pie>
+          </nb-card-body>
+        </nb-card-back>
+      </nb-flip-card>
+    </div>
+
+
+    <div class="col-6">
+      <nb-reveal-card>
+        <nb-card-front>
+          <nb-card-header>Top 5 ISPs (India)</nb-card-header>
+          <nb-card-body *ngIf="graphData_in2!==undefined">
+            <ngx-echarts-pie [pieChartName]="'Cities in India'" [pieChartData]="graphData_in2"></ngx-echarts-pie>
+          </nb-card-body>
+        </nb-card-front>
+        <nb-card-back>
+          <nb-card-header>Top 5 Internet Service Providers</nb-card-header>
+          <nb-card-body *ngIf="graphData2!==undefined">
+            <ngx-echarts-pie [pieChartName]="'ISP'" [pieChartData]="graphData2"></ngx-echarts-pie>
+          </nb-card-body>
+        </nb-card-back>
+      </nb-reveal-card>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-12">
+      <nb-card>
+        <nb-card-header>Country Wide Distribution</nb-card-header>
+        <nb-card-body *ngIf="bubbleMapData!==undefined">
+          <ngx-bubble-map [bubbleMapData]="bubbleMapData"></ngx-bubble-map>
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+  </div>
+
+  <!-- <div class="col-6">
+    <nb-card>
+      <nb-card-header>Horizontal Bar Graph - Country</nb-card-header>
+      <nb-card-body>
+      </nb-card-body>
+    </nb-card>
+  </div> -->
+
+</div>

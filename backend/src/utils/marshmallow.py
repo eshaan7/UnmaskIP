@@ -1,12 +1,14 @@
 from flask_marshmallow import Marshmallow
-import simplejson
+# import simplejson
 from marshmallow_sqlalchemy import ModelSchema, ModelSchemaOpts
 from .models import db
+
 
 class FlaskMarshmallowFactory(Marshmallow):
 
     def __init__(self,  *args, **kwargs):
         super(FlaskMarshmallowFactory, self).__init__(*args, **kwargs)
+
 
 # Init ma
 ma = FlaskMarshmallowFactory()

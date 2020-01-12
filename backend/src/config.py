@@ -8,6 +8,8 @@ class BaseConfig:
 
     DOMAIN = 'http://127.0.0.1:5000/api/v1/'
 
+    # DOMAIN = 'https://unmaskip.herokuapp.com/api/v1/'
+
     MARSHMALLOW_STRICT = True
     MARSHMALLOW_DATEFORMAT = 'rfc'
 
@@ -23,8 +25,8 @@ class BaseConfig:
 
 class Config(BaseConfig):
     # 11,67,995 datasets
-    SQLALCHEMY_DATABASE_URI = "postgres://eshaan:@localhost/bytekarma"
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL") # "postgres://eshaan:@localhost/bytekarma" 
     SHODAN_API_KEY = 'FP8Q9eOJdaGulEuHVJswVqPZTrnvOGu0'
-    ELASTICSEARCH_URL = 'http://localhost:9200'
+    # ELASTICSEARCH_URL =  os.environ.get("BONSAI_URL") # 'http://localhost:9200'
     SQLALCHEMY_TRACK_MODIFICATIONS = False 
-    DEBUG = True # Turn DEBUG OFF before deployment
+    DEBUG = False # Turn DEBUG OFF before deployment
