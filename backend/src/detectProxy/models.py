@@ -35,13 +35,11 @@ class ipinfo(BaseMixin, ReprMixin, db.Model):
         try:
             if 'countryCodeEquals' in data.keys():
                 cce = data['countryCodeEquals']
-                print("1")
                 sql = f"SELECT {data['colList']}, count({data['colCount']}) FROM ipinfo \
-                        where ipinfo.country_code={cce} \
-                        GROUP BY {data['colList']} \
+                        where country_code='{cce}' \
+                        GROUP BY {data['colCount']} \
                         ORDER BY count desc limit {data['limit']}"
             else:
-                print("2")
                 sql = f"SELECT {data['colList']}, count({data['colCount']}) FROM ipinfo \
                         GROUP BY {data['colList']} \
                         ORDER BY count desc limit {data['limit']}"
@@ -51,6 +49,7 @@ class ipinfo(BaseMixin, ReprMixin, db.Model):
                 data = constructData(res.keys(), res.fetchall())
                 return data
         except Exception as e:
+            db.session.rollback()
             print("Error: ", e)
             return None
 

@@ -22,8 +22,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(public userService: UserService) {}
 
   ngOnInit(): void {
-    if (this.userService.aggregation_data_front.length === 2) {
+    if (this.userService.aggregation_data_front.length === 3) {
       this.initFrontData();
+    }
+    if (this.userService.aggregation_data_back.length ===2) {
       this.initBackData();
     }
 
@@ -42,7 +44,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   initFrontData(): void {
     this.graphData_in1 = this.constructGraphData(
       this.userService.aggregation_data_front[0],
-      "country_name"
+      "city"
     );
     this.graphData_in2 = this.constructGraphData(
       this.userService.aggregation_data_front[1],

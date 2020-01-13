@@ -35,36 +35,44 @@
   <div class="row align-items-center">
 
     <div class="col-6">
-      <nb-flip-card>
+      <nb-reveal-card>
         <nb-card-front>
-          <nb-card-header>Top 5 Cities (India)</nb-card-header>
-          <nb-card-body *ngIf="graphData_in1!==undefined">
-            <ngx-echarts-pie [pieChartName]="'Cities in India'" [pieChartData]="graphData_in1"></ngx-echarts-pie>
-          </nb-card-body>
+          <nb-card>
+            <nb-card-header>Top 5 Cities (India)</nb-card-header>
+            <nb-card-body *ngIf="graphData_in1!==undefined">
+              <ngx-echarts-pie [pieChartName]="'Cities in India'" [pieChartData]="graphData_in1"></ngx-echarts-pie>
+            </nb-card-body>
+          </nb-card>
         </nb-card-front>
         <nb-card-back>
-          <nb-card-header>Top 5 Countries</nb-card-header>
-          <nb-card-body *ngIf="graphData1!==undefined">
-            <ngx-echarts-pie [pieChartName]="'Countries'" [pieChartData]="graphData1"></ngx-echarts-pie>
-          </nb-card-body>
+          <nb-card>
+            <nb-card-header>Top 5 Countries</nb-card-header>
+            <nb-card-body *ngIf="graphData1!==undefined">
+              <ngx-echarts-pie [pieChartName]="'Countries'" [pieChartData]="graphData1"></ngx-echarts-pie>
+            </nb-card-body>
+          </nb-card>
         </nb-card-back>
-      </nb-flip-card>
+      </nb-reveal-card>
     </div>
 
 
     <div class="col-6">
       <nb-reveal-card>
         <nb-card-front>
-          <nb-card-header>Top 5 ISPs (India)</nb-card-header>
-          <nb-card-body *ngIf="graphData_in2!==undefined">
-            <ngx-echarts-pie [pieChartName]="'Cities in India'" [pieChartData]="graphData_in2"></ngx-echarts-pie>
-          </nb-card-body>
+          <nb-card>
+            <nb-card-header>Top 5 ISPs (India)</nb-card-header>
+            <nb-card-body *ngIf="graphData_in2!==undefined">
+              <ngx-echarts-pie [pieChartName]="'Cities in India'" [pieChartData]="graphData_in2"></ngx-echarts-pie>
+            </nb-card-body>
+          </nb-card>
         </nb-card-front>
         <nb-card-back>
-          <nb-card-header>Top 5 Internet Service Providers</nb-card-header>
-          <nb-card-body *ngIf="graphData2!==undefined">
-            <ngx-echarts-pie [pieChartName]="'ISP'" [pieChartData]="graphData2"></ngx-echarts-pie>
-          </nb-card-body>
+          <nb-card>
+            <nb-card-header>Top 5 Internet Service Providers</nb-card-header>
+            <nb-card-body *ngIf="graphData2!==undefined">
+              <ngx-echarts-pie [pieChartName]="'ISP'" [pieChartData]="graphData2"></ngx-echarts-pie>
+            </nb-card-body>
+          </nb-card>
         </nb-card-back>
       </nb-reveal-card>
     </div>

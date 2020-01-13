@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NbCardModule, NbSpinnerModule } from '@nebular/theme';
+import { NbCardModule } from '@nebular/theme';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { DashboardComponent } from './dashboard.component';
@@ -12,7 +12,6 @@ import { BubbleMapComponent } from '../../@theme/components/bubble/bubble-map.co
     NbCardModule,
     ThemeModule,
     NgxEchartsModule,
-    NbSpinnerModule
   ],
   declarations: [
     DashboardComponent,
