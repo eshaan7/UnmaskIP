@@ -1,0 +1,22 @@
+[
+  {
+    "city": "Gurgaon", 
+    "count": 2553
+  }, 
+  {
+    "city": "Mumbai", 
+    "count": 1994
+  }, 
+  {
+    "city": "Udaipur", 
+    "count": 1087
+  }, 
+  {
+    "city": "Delhi", 
+    "count": 1024
+  }, 
+  {
+    "city": "Rae Bareli", 
+    "count": 963
+  }
+]

@@ -1,67 +1,32 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component} from "@angular/core";
 import { UserService } from "../../@core/utils/user.service";
-import { Subscription } from "rxjs";
 
 @Component({
   selector: "ngx-dashboard",
   templateUrl: "./dashboard.component.html",
   styleUrls: ["./dashboard.component.scss"]
 })
-export class DashboardComponent implements OnInit, OnDestroy {
-  sub1: Subscription;
-  sub2: Subscription;
-
+export class DashboardComponent {
+  dataFront: any[] = [null, null];
+  dataBack: any[] = [null, null];
   bubbleMapData: any[];
 
-  graphData_in1: any[];
-  graphData_in2: any[];
-
-  graphData1: any[];
-  graphData2: any[];
-
-  constructor(public userService: UserService) {}
-
-  ngOnInit(): void {
-    if (this.userService.aggregation_data_front.length === 3) {
-      this.initFrontData();
-    }
-    if (this.userService.aggregation_data_back.length ===2) {
-      this.initBackData();
-    }
-
-    this.sub1 = this.userService.aggregation_data_front$.subscribe(res => {
-      this.graphData_in1 = this.constructGraphData(res[0], "city");
-      this.graphData_in2 = this.constructGraphData(res[1], "isp");
-      this.bubbleMapData = res[2];
-    });
-
-    this.sub2 = this.userService.aggregation_data_back$.subscribe(res => {
-      this.graphData1 = this.constructGraphData(res[0], "country_name");
-      this.graphData2 = this.constructGraphData(res[1], "isp");
-    });
+  constructor(public userService: UserService) {
+    setTimeout(() => {
+      this.initFrontData(this.userService.aggregation_data_front);
+      this.initBackData(this.userService.aggregation_data_back);
+    }, 500);
   }
 
-  initFrontData(): void {
-    this.graphData_in1 = this.constructGraphData(
-      this.userService.aggregation_data_front[0],
-      "city"
-    );
-    this.graphData_in2 = this.constructGraphData(
-      this.userService.aggregation_data_front[1],
-      "isp"
-    );
-    this.bubbleMapData = this.userService.aggregation_data_front[2];
+  initFrontData(data): void {
+    this.dataFront[0] = this.constructGraphData(data[0], "city");
+    this.dataFront[1] = this.constructGraphData(data[1], "isp");
+    this.bubbleMapData = data[2];
   }
 
-  initBackData(): void {
-    this.graphData1 = this.constructGraphData(
-      this.userService.aggregation_data_back[0],
-      "country_name"
-    );
-    this.graphData2 = this.constructGraphData(
-      this.userService.aggregation_data_back[1],
-      "isp"
-    );
+  initBackData(data): void {
+    this.dataBack[0] = this.constructGraphData(data[0], "country_name");
+    this.dataBack[1] = this.constructGraphData(data[1], "isp");
   }
 
   constructGraphData(data: any, key: string) {
@@ -71,12 +36,4 @@ export class DashboardComponent implements OnInit, OnDestroy {
     return new_data;
   }
 
-  ngOnDestroy() {
-    if (this.sub1) {
-      this.sub1.unsubscribe();
-    }
-    if (this.sub2) {
-      this.sub2.unsubscribe();
-    }
-  }
 }

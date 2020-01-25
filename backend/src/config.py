@@ -25,8 +25,8 @@ class BaseConfig:
 
 class Config(BaseConfig):
     # 11,67,995 datasets
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL") # "postgres://eshaan:@localhost/bytekarma" 
-    SHODAN_API_KEY = 'FP8Q9eOJdaGulEuHVJswVqPZTrnvOGu0'
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    SHODAN_API_KEY = os.environ.get("SHODAN_API_KEY")
     # ELASTICSEARCH_URL =  os.environ.get("BONSAI_URL") # 'http://localhost:9200'
     SQLALCHEMY_TRACK_MODIFICATIONS = False 
     DEBUG = False # Turn DEBUG OFF before deployment

@@ -1,6 +1,6 @@
-<div *ngIf="userService.aggregation_data_front!==null" class="container">
+<div *ngIf="userService.aggregation_data_front!==undefined" class="container">
 
-  <div *ngIf="userService.count!==undefined" class="row align-items-center">
+  <div class="row align-items-center">
     <div class="col-4">
       <nb-card>
         <nb-card-header>No. of IPs</nb-card-header>
@@ -26,12 +26,6 @@
       </nb-card>
     </div>
   </div>
-
-  <!-- 
-  <div class="row mb-3">
-    <p class="paragraph">Here is some information we gathered.</p>
-  </div> -->
-
   <div class="row align-items-center">
 
     <div class="col-6">
@@ -39,16 +33,16 @@
         <nb-card-front>
           <nb-card>
             <nb-card-header>Top 5 Cities (India)</nb-card-header>
-            <nb-card-body *ngIf="graphData_in1!==undefined">
-              <ngx-echarts-pie [pieChartName]="'Cities in India'" [pieChartData]="graphData_in1"></ngx-echarts-pie>
+            <nb-card-body>
+              <ngx-echarts-pie [pieChartName]="'Cities in India'" [pieChartData]="dataFront[0]"></ngx-echarts-pie>
             </nb-card-body>
           </nb-card>
         </nb-card-front>
         <nb-card-back>
           <nb-card>
             <nb-card-header>Top 5 Countries</nb-card-header>
-            <nb-card-body *ngIf="graphData1!==undefined">
-              <ngx-echarts-pie [pieChartName]="'Countries'" [pieChartData]="graphData1"></ngx-echarts-pie>
+            <nb-card-body>
+              <ngx-echarts-pie [pieChartName]="'Countries'" [pieChartData]="dataBack[0]"></ngx-echarts-pie>
             </nb-card-body>
           </nb-card>
         </nb-card-back>
@@ -61,16 +55,16 @@
         <nb-card-front>
           <nb-card>
             <nb-card-header>Top 5 ISPs (India)</nb-card-header>
-            <nb-card-body *ngIf="graphData_in2!==undefined">
-              <ngx-echarts-pie [pieChartName]="'Cities in India'" [pieChartData]="graphData_in2"></ngx-echarts-pie>
+            <nb-card-body> 
+              <ngx-echarts-pie [pieChartName]="'Cities in India'" [pieChartData]="dataFront[1]"></ngx-echarts-pie>
             </nb-card-body>
           </nb-card>
         </nb-card-front>
         <nb-card-back>
           <nb-card>
             <nb-card-header>Top 5 Internet Service Providers</nb-card-header>
-            <nb-card-body *ngIf="graphData2!==undefined">
-              <ngx-echarts-pie [pieChartName]="'ISP'" [pieChartData]="graphData2"></ngx-echarts-pie>
+            <nb-card-body>
+              <ngx-echarts-pie [pieChartName]="'ISP'" [pieChartData]="dataBack[1]"></ngx-echarts-pie>
             </nb-card-body>
           </nb-card>
         </nb-card-back>
@@ -84,7 +78,7 @@
     <div class="col-12">
       <nb-card>
         <nb-card-header>Country Wide Distribution</nb-card-header>
-        <nb-card-body *ngIf="bubbleMapData!==undefined">
+        <nb-card-body *ngIf="bubbleMapData!==undefined" >
           <ngx-bubble-map [bubbleMapData]="bubbleMapData"></ngx-bubble-map>
         </nb-card-body>
       </nb-card>
