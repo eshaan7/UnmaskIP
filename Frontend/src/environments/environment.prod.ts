@@ -5,5 +5,6 @@
  */
 export const environment = {
   production: true,
-  url: "https://unmaskip.herokuapp.com/api/v1/"
+  url: "https://unmaskip.herokuapp.com/api/v1/",
+  G_MAPS_KEY: ""
 };

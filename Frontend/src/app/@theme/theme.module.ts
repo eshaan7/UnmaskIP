@@ -37,6 +37,7 @@ import { CORPORATE_THEME } from './styles/theme.corporate';
 import { DARK_THEME } from './styles/theme.dark';
 import { FormsModule } from '@angular/forms';
 import { GmapsComponent } from './components/gmaps/gmaps.component';
+import { environment } from '../../environments/environment';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -46,7 +47,7 @@ const NB_MODULES = [
   NbIconModule,
   NbEvaIconsModule,
   AgmCoreModule.forRoot({
-    apiKey: 'AIzaSyCJkqbowZ0VQqyyS0tB49wZtA7Rv3P2iaw',
+    apiKey: environment.G_MAPS_KEY, 
     libraries: ['places'],
   }),
     // apiKey: 'AIzaSyCpVhQiwAllg1RAFaxMWSpQruuGARy0Y1k',
