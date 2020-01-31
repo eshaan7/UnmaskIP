@@ -26,10 +26,7 @@ def create_app(package_name, config, blueprints=None, extensions=None):
     #     hosts=['http://localhost:9200/'], http_compress=True) if True else None
     CORS(app,
          expose_headers='retry-after, x-ratelimit-limit, \
-            x-ratelimit-remaining, x-ratelimit-reset')
-            # \
-            #    origins=["https://unmaskip.firebaseapp.com", "https://www.unmaskip.firebaseapp.com", \
-            #       "https://unmaskip.web.com", "https://www.unmaskip.web.com"])
+            x-ratelimit-remaining, x-ratelimit-reset', origins=["https://unmaskip.firebaseapp.com", "https://www.unmaskip.firebaseapp.com"])
     if blueprints:
         for bp in blueprints:
             app.register_blueprint(bp)
